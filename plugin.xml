@@ -61,9 +61,9 @@
 
     <config-file target="AndroidManifest.xml" parent="/*/application/activity">
       <intent-filter>
-        <data android:scheme="memoriesapp" android:host="srikanth.memories.com"/>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="foo" android:host="srikanth.memories.com"/>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
         <category android:name="android.intent.category.BROWSABLE" />
       </intent-filter>
     </config-file>
