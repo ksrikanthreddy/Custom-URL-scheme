@@ -38,8 +38,20 @@ public class LaunchMyApp extends CordovaPlugin {
 
   @Override
   public void onNewIntent(Intent intent) {
-    String intentString = intent.getDataString();
-    webView.loadUrl("javascript:handleOpenURL('"+intentString+"');");
+    final String intentString = intent.getDataString();
+    if (intentString != null && intentString.contains("://") &&
+        intent.getScheme() != null && intent.hasCategory(Intent.CATEGORY_BROWSABLE)) {
+			Log.e(TAG, "onNewIntent if1=true");
+      intent.setData(null);
+      try {
+        StringWriter writer = new StringWriter(intentString.length() * 2);
+        escapeJavaStyleString(writer, intentString, true, false);
+				String s = writer.toString();
+				Log.e(TAG, "onNewIntent writer.toString = "+s);
+        webView.loadUrl("javascript:handleOpenURL('" + s + "');");
+      } catch (IOException ignore) {
+      }
+    }
   }
 
   // Taken from commons StringEscapeUtils
