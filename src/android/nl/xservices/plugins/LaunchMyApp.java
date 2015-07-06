@@ -22,7 +22,7 @@ public class LaunchMyApp extends CordovaPlugin {
     if (ACTION_CHECKINTENT.equalsIgnoreCase(action)) {
       final Intent intent = ((CordovaActivity) this.webView.getContext()).getIntent();
       final String intentString = intent.getDataString();
-      if (intentString != null && intentString.contains("://") && intent.getScheme() != null) {
+      if (intentString != null && intentString.contains("://")) {
         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, intent.getDataString()));
         intent.setData(null);
         return true;
