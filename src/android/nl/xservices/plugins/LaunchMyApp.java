@@ -14,7 +14,7 @@ import java.io.Writer;
 import java.util.Locale;
 
 public class LaunchMyApp extends CordovaPlugin {
-
+	private static final String TAG = "LaunchMyApp";
   private static final String ACTION_CHECKINTENT = "checkIntent";
 
   @Override
